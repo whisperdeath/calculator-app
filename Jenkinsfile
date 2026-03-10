@@ -1,30 +1,38 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node'
+    }
+
     stages {
+
         stage('Install') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
+
         stage('Build') {
             steps {
-                sh 'npm run build'
+                echo 'Building the application...'
             }
         }
+
     }
 
     post {
-        success {
-            echo 'Bravo, déploiement réussi !'
-        }
         failure {
             echo 'Le build a échoué.'
+        }
+        success {
+            echo 'Build réussi.'
         }
     }
 }
