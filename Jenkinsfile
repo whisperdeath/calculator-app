@@ -27,12 +27,4 @@ pipeline {
 
     }
 
-    post {
-        failure {
-            echo 'Le build a échoué.'
-        }
-        success {
-            echo 'Build réussi.'
-        }
-    }
-}
+  
